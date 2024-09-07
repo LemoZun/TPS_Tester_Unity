@@ -1,0 +1,25 @@
+﻿벡터값을 speed로 줄 순 없다
+sqrMagnitude를 써서 줘야하나?
+그러면 제곱값이니까 마이너스 값을 줄 수 없어진다
+그냥 magnitude를 써야하나
+움직이면서 모션이 변하긴 하는데 움직여도 idle 상태를 너무 오래 유지한다.
+transition의 has exit time을 없애고 duration을 줄여주니 해결됨
+
+조준 상태를 트리거로 하니 조준을 한번 한 후 모션이 진행되면 내려버림
+bool로 하면 조준을 계속 유지하지 않을까? 됐다
+
+캐릭터 회전과 카메라 회전 참고자료 :  https://www.youtube.com/watch?v=P4qyRyQdySw
+
+Input.GetButtonDown(KeyCode.Space) 이건 인자값으로 string을 줘야하고
+Input.GetKeyDown(KeyCode.Space)로 써야함 
+둘이 비슷해서 헷갈리지만 에러 뜨니까 괜찮다..
+
+구르기를 단순히 3을 곱해서 구현하려 했는데 그냥 걷는것과 모션만 나올뿐 속도차이는 전혀 없다
+구를때는 조준같은 다른행동도 불가하게 만들어줘야 할거같다
+구르기를 따로 코루틴으로 만들어주면 될 거 같았는데 여전히 비슷했다
+yield return new WaitForSeconds(2.1f); // 구르기 애니메이션의 총 시간
+모션자체의 빠르기는 인스펙터 상의 speed로 조절 가능
+모션과 이동은 다르다
+
+
+
